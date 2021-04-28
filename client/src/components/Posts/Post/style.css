@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&family=Taviraj:ital@1&display=swap');
+
+
+.card{
+    margin: 10px;
+    border-radius: 10px !important;
+}
+.card-text{
+    font-family:sans-serif;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    font-size: large;
+}
+.card-img-top{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+}
+.card-info{
+    font-family: 'Taviraj', serif;
+}

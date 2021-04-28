@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,800&display=swap');
+.post-container{
+    background-color: #b2b2b2;
+}
+.post-container .heading{
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(243, 122, 178);
+    padding: 10px 0;
+}
+.posts{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(290px ,1fr));
+    /* background-image: ; */
+}

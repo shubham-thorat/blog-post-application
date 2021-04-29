@@ -4,7 +4,7 @@ import { fetchData } from '../redux/postDataAction'
 const url = 'http://localhost:5000/posts'
 
 export const sendData = (postData)=>{
-
+    console.log(postData)
     axios.post(url,postData)
     .then(response => {
         console.log(response)

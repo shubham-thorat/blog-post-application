@@ -11,13 +11,8 @@ function FetchData() {
     })
 
     const HandleSubmit = (e) => {
-        if (!(post.title.length && post.title.message && post.title.creator)) {
-            alert(`Enter All Details !!!`)
-            e.preventDefault()
-        }
-        else {
             sendData(post)
-        }
+            // e.preventDefault()
     }
 
     const HandleClear = (e) => {

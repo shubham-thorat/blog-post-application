@@ -16,6 +16,7 @@ router.get('/',(req,res)=>{
 router.post('/',(req,res)=>{
     const data = req.body
     const newPost = new Post(data)
+    // console.log('data saved')
     newPost.save()
     res.send(newPost)
 })

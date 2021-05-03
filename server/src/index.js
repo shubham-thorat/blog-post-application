@@ -26,7 +26,7 @@ db.once('open',()=>{
 })
 
 //app used router 
-app.use('/posts',router)
+app.use('/blog-post-application/posts',router)
 
 
 const port = process.env.REACT_APP_PORT

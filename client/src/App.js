@@ -12,7 +12,7 @@ function App() {
         <Switch>
           <Route path='/blog-post-application/' exact component={FrontPage} />
           <Route path='/blog-post-application/fullpost' exact component={FullPost} />
-          <Route path='/blog-post-application/*' exact component={Error} />
+          <Route path='*' exact component={Error} />
         </Switch>
       </div>
     </Provider>

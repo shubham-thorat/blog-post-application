@@ -1,48 +1,67 @@
 import React, { useState } from 'react'
 import { sendData } from '../../api'
-import './style.css'
 
-function FetchData() {
+
+function SubmitPost() {
     const [post, setpost] = useState({
         title: '',
         message: '',
         creator: '',
-        createdAt: new Date()
+        createdAt: new Date(),
+        photo: ''
     })
 
     const HandleSubmit = (e) => {
-            sendData(post)
-            // e.preventDefault()
+        sendData(post)
     }
 
-    const HandleClear = (e) => {
-        e.preventDefault()
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        const imageurl = await convertBase64(file)
+        console.log(imageurl)
         setpost({
-            title: '',
-            message: '',
-            creator: '',
-            createdAt: new Date()
+            ...post,
+            photo: imageurl
+        })
+    }
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file)
+            fileReader.onload = () => {
+                resolve(fileReader.result)
+            }
+            fileReader.onerror = (error) => {
+                reject(error)
+            }
         })
     }
     return (
-        <form onSubmit={HandleSubmit}  className="box">
-            <h3 className="heading" style={{ marginBottom: "30px" }}> FORM </h3>
-            <div className="item">
-                <input type="text" placeholder="Enter Post title" className="form-control input-sm" value={post.title} onChange={e => setpost({ ...post, title: e.target.value })} />
+        <form onSubmit={HandleSubmit}>
+            <div class="mb-3 mx-2 mt-3">
+                <input type="text" class="form-control" id="exampleInputTitle" placeholder="Enter Post Title" value={post.title} onChange={e => setpost({ ...post, title: e.target.value })} />
             </div>
-            <div className="item">
-                <textarea type="text" placeholder="Enter Your Message" className="form-control input-sm" value={post.message} onChange={e => setpost({ ...post, message: e.target.value })} />
+            <div class="mb-3 mx-2">
+                <textarea type="text" class="form-control" id="exampleInputMessage" placeholder="Enter Post Message" value={post.message} onChange={e => setpost({ ...post, message: e.target.value })}/>
             </div>
-            <div className="item">
-                <input type="text" placeholder="Enter Your creator name" className="form-control input-sm" value={post.creator} onChange={e => setpost({ ...post, creator: e.target.value })} />
+            <div class="mb-3 mx-2">
+                <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Your Name" value={post.creator} onChange={e => setpost({ ...post, creator: e.target.value })}/>
             </div>
-            <div className="item">
-                <input type="text" placeholder="Enter Date of Creation" className="form-control input-sm" value={post.createdAt} onChange={e => setpost({ ...post, createdAt: e.target.value })} />
+
+            <div class="mb-3 mx-2">
+                <input type="text" class="form-control" id="exampleInputDate" placeholder="Enter Date Of Creation" value={post.createdAt} onChange={e => setpost({ ...post, createdAt: e.target.value })}/>
             </div>
-            <button type="submit" className="btn btn-primary" style={{display : "block" , margin : "5px auto"}}> Send Data </button>
-            <button type="clear" className="btn btn-danger" onClick={HandleClear} style={{display : "block" , margin : "5px auto"}}> Clear Data </button>
+
+            <div class="mb-3 mx-2 d-flex">
+                <input type="file"  id="UploadImage" onChange={uploadImage}/>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary"> Create Post </button>
+            </div>
         </form>
     )
 }
 
-export default FetchData
+export default SubmitPost

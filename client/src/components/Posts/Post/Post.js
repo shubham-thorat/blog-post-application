@@ -2,21 +2,24 @@ import React from 'react'
 import './style.css'
 import { NavLink } from 'react-router-dom'
 
-function Post(props) { 
+function Post(props) {
     const post = props.props;
-    // console.log(post.message)
-    const mess = post.message && (post.message.substr(0,post.message.length <= 50 ? post.message.length : 50) + '...')
+    const mess = post.message && (post.message.substr(0, post.message.length <= 110 ? post.message.length : 110) + '...')
     return (
-        <div className="card" style={{width: "18rem"}}>
-            <img src={require('../../../images/bg.jpg').default} className="card-img-top" alt="Post-1" />
-            <div className="card-body">
-                <h5 className="card-title">{post.title}</h5>
-                <p className="card-text">{mess}</p>
-                <p className="card-info" style={{marginBottom:"0px"}}> Card Author : {post.creator} </p>
-                <p className="card-info" style={{marginBottom:"9px"}}> Creation Time  : {post.createdAt} </p>
-                <NavLink to={
-                    { pathname:"/fullpost" ,post:post}
-                } className="btn" style={{display : "block" , margin : "5px auto", backgroundColor:"#024681",color:"white"}} > SEE THE FULL POST</NavLink>
+        <div className="col">
+            <div className="card shadow-sm">
+                <img src={post.photo} className="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail" />
+                <div className="card-body">
+                    <h5 className="heading my-0 py-1"> {post.title} </h5>
+                    <p className="card-text">{mess}</p>
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div className="btn-group">
+                            <NavLink to={{ pathname: "/fullpost", post: post }} type="button" className="btn btn-sm btn-outline-secondary" > View</NavLink>
+                            <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small className="text-muted fw-bold fs-6">  - {post.creator}</small>
+                    </div>
+                </div>
             </div>
         </div>
     )

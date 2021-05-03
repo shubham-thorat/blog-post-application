@@ -8,8 +8,8 @@ const app = express()
 
 //code to tell that get request can be json object ||  object as string and array
 dotenv.config()
-app.use(express.json())
-app.use(express.urlencoded({extended : true}))
+app.use(express.json({extended:true,limit:"50mb"}))
+app.use(express.urlencoded({extended : true,limit:"50mb"}))
 app.use(cors())
 
 mongoose.connect(process.env.REACT_APP_MONGO_URI,{

@@ -10,9 +10,9 @@ function App() {
     <Provider store={store}>
       <div className="App" >
         <Switch>
-          <Route path='/' exact component={FrontPage} />
-          <Route path='/fullpost' exact component={FullPost} />
-          <Route path='*' exact component={Error} />
+          <Route path='/blog-post-application/' exact component={FrontPage} />
+          <Route path='/blog-post-application/fullpost' exact component={FullPost} />
+          <Route path='/blog-post-application/*' exact component={Error} />
         </Switch>
       </div>
     </Provider>

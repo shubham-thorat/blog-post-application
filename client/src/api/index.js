@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { fetchData } from '../redux/postDataAction'
 
-const url = 'http://localhost:5000/posts'
+const url = 'http://localhost:5000/blog-post-application/posts'
 
 export const sendData = (postData)=>{
     // console.log(postData)
